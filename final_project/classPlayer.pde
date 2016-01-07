@@ -1,6 +1,6 @@
 class Player{
   int currentHP;
   int maxHP;
-  PImage tank;
-  PVector sprite;
+  PImage sprite;
+  PVector loc, vel;
 }

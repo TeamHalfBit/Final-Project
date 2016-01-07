@@ -4,6 +4,5 @@ class Enemy{
  PImage sprite; 
  PVector loc, vel;
  
- //probably more variables to add, suggestions are welcome
  
 }
