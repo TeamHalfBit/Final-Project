@@ -19,19 +19,19 @@ class Player{
   void move(){
     if(keyPressed){
       if (key == 'w'){
-        vel.y.add(0, -1); //move up
+        vel.add(0, -1); //move up
       }
       
       if (key == 's'){
-        vel.y.add(0, 1);  //move down
+        vel.add(0, 1);  //move down
       }
       
       if (key == 'a'){
-        vel.x.add(-1, 0);  //move left
+        vel.add(-1, 0);  //move left
       }
       
       if (key == 'd'){
-        vel.x.add(1, 0);  //move right
+        vel.add(1, 0);  //move right
       }
       
       

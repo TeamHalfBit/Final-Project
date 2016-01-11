@@ -13,4 +13,5 @@ void setup() {
 void draw() {
   //background(); // will the background be created by the graphic/UI designers?
   p.display();
+  p.move();
 }
