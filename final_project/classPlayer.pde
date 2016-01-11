@@ -14,24 +14,26 @@ class Player{
   
   void display(){
     image(sprite, loc.x, loc.y);
+
   }
   
   void move(){
+    
     if(keyPressed){
       if (key == 'w'){
-        vel.add(0, -1); //move up
+        loc.add(0, -1); //move up, y
       }
       
       if (key == 's'){
-        vel.add(0, 1);  //move down
+        loc.add(0, 1);  //move down, y
       }
       
       if (key == 'a'){
-        vel.add(-1, 0);  //move left
+        loc.add(-1, 0);  //move left, x
       }
       
       if (key == 'd'){
-        vel.add(1, 0);  //move right
+        loc.add(1, 0);  //move right, x
       }
       
       
