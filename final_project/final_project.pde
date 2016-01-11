@@ -7,10 +7,10 @@ Player p;
 
 void setup() {
   size(1200, 800);
-  p = new Player();
+  p = new Player(width/2, height/2, -3, 3);
 }
 
 void draw() {
   //background(); // will the background be created by the graphic/UI designers?
-
+  p.display();
 }
