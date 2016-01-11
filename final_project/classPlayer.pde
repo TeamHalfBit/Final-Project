@@ -21,19 +21,19 @@ class Player{
     
     if(keyPressed){
       if (key == 'w'){
-        loc.add(0, -1); //move up, y
+        loc.add(0, -3); //move up, y
       }
       
       if (key == 's'){
-        loc.add(0, 1);  //move down, y
+        loc.add(0, 3);  //move down, y
       }
       
       if (key == 'a'){
-        loc.add(-1, 0);  //move left, x
+        loc.add(-3, 0);  //move left, x
       }
       
       if (key == 'd'){
-        loc.add(1, 0);  //move right, x
+        loc.add(3, 0);  //move right, x
       }
       
       
