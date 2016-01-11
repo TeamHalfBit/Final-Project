@@ -1,13 +1,14 @@
 /********************************
-If you have any suggestions, please put them here or make note of them here. 
-All of this will be commented. 
-********************************/
+ If you have any suggestions, please put them here or make note of them here. 
+ All of this will be commented. 
+ ********************************/
 
 
-void setup(){
-  //size();
+void setup() {
+  size(1200, 800);
 }
 
-void draw(){
-  //background(); // will the background be created by the graphic/UI designers? 
+void draw() {
+  //background(); // will the background be created by the graphic/UI designers?
+
 }
