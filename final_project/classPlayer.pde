@@ -11,4 +11,9 @@ class Player{
     loc = new PVector(width/2, height/2);
     vel = new PVector(-3, 3);
   }
+  
+  void display(){
+    image();
+  }
+  
 }

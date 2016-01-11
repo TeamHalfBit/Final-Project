@@ -3,9 +3,11 @@
  All of this will be commented. 
  ********************************/
 
+Player p;
 
 void setup() {
   size(1200, 800);
+  p = new Player();
 }
 
 void draw() {
