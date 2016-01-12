@@ -3,12 +3,14 @@ boolean button;
 Button a;
 Button b;
 Button c;
+Health h;
 void setup() {
   size(1200, 800);
   screen = 0;
   a = new Button(200, 650);
   b = new Button(700, 650);
   c = new Button(50,650);
+  h = new Health(100);
 }
 
 void draw() {
@@ -21,10 +23,10 @@ void draw() {
     textAlign(CENTER);
     text("WELCOME", width/2, 200);
     textSize(30);
-    text("The Jabinx are invading the earth.", width/2, 400);
-    text("The city has been evacuated", width/2, 450);
-    text("The only thing between you and them is your tank", width/2, 500);
-    text("And they have their sights on you!", width/2, 550);
+    text("The Jabinx are invading the earth.", width/2, 250);
+    text("The city has been evacuated", width/2, 300);
+    text("The only thing between you and them is your tank", width/2, 350);
+    text("And they have their sights on you!", width/2, 400);
     textSize(60);
     noFill();
     fill(0);
@@ -53,4 +55,6 @@ void mousePressed() {
   if (c.inRect()) {
     screen = 0;
   }
+ /* if (a.inRect()) {
+    screen = idk;*/
 }
