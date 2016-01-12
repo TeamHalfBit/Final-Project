@@ -9,7 +9,7 @@ Player p;
 
 void setup() {
   size(1200, 800);
-  p = new Player(width/2, height/2, -3, 3);
+  p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
 }
 
 void draw() {

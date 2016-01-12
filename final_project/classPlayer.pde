@@ -1,20 +1,26 @@
 class Player{
   int currentHP;
   int maxHP;
-  PImage sprite;
+  PImage[] sprites;
+  int frames;
   PVector loc, vel;
   
-  Player(float tX, float tY, float tVelX, float tVelY){
+  Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames){
     currentHP = 100;
     maxHP = 100;
-    sprite = loadImage("Tank.gif");
+    frames = tFrames;
+    sprites = new PImage[frames];
     loc = new PVector(tX, tY);
     vel = new PVector(tVelX, tVelY);
+    
+    for(int i = 0; i < sprites.length; i++){
+      sprites[i] = loadImage(prefix + nf(i, digits) + suffix);
+    }
   }
   
   void display(){
-    image(sprite, loc.x, loc.y);
-
+    int currentFrame = frameCount%frames;
+    image(sprites[currentFrame], loc.x, loc.y);
   }
   
   void move(){
