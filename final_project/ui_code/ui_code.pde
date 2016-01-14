@@ -4,13 +4,17 @@ Button a;
 Button b;
 Button c;
 Health h;
+Ammo am;
+EL el;
 void setup() {
   size(1200, 800);
   screen = 0;
   a = new Button(200, 650);
   b = new Button(700, 650);
   c = new Button(50,650);
-  h = new Health(100);
+ // h = new Health(100);
+ // am = new Ammo(50);
+ // el = new EL(10);
 }
 
 void draw() {
