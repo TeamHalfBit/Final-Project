@@ -22,6 +22,6 @@ class Enemy{
      image(sprites[currentFrame], loc.x, loc.y);
    }
    
- 
+   
 
 }

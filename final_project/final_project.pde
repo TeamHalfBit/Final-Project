@@ -6,14 +6,18 @@ ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 
 
 Player p;
+Player turrent;
 
 void setup() {
   size(1200, 800);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
+  turrent = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
 }
 
 void draw() {
   background(155); // will the background be created by the graphic/UI designers?
   p.display();
   p.move();
+  turrent.display();
+  turrent.move();
 }
