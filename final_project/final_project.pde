@@ -12,7 +12,7 @@ void setup() {
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
 }
 
-void draw() {
+void draw() {v
   background(155); // will the background be created by the graphic/UI designers?
   p.display();
   p.move();
