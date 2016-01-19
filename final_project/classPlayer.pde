@@ -51,8 +51,8 @@ class Player {
     sprite = loadImage("Tank_cannon00.png");
     translate(loc.x, loc.y);
     angle = atan2(mouseY - loc.y, mouseX - loc.x);
-    rotate(angle);
+    rotate(angle + HALF_PI);
     imageMode(CENTER);
-    image(sprite, loc.x, loc.y);
+    image(sprite, 0, 0);
   }
 }

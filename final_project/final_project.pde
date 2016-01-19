@@ -18,7 +18,7 @@ void draw() {
   background(155); // will the background be created by the graphic/UI designers?
   p.display();
   p.move();
-  turret.display();
+  //turret.display();
   turret.move();
-  //turret.rotateCannon();
+  turret.rotateCannon();
 }
