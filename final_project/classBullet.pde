@@ -16,6 +16,7 @@ class Bullet{
   void display(){
     if (type == 0){
       //display this image
+      //image();
     }
   }
   

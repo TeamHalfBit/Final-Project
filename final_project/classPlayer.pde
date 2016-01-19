@@ -55,4 +55,9 @@ class Player {
     imageMode(CENTER);
     image(sprite, 0, 0);
   }
+  
+  
+  
+  
+  
 }
