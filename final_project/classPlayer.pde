@@ -5,7 +5,7 @@ class Player {
   int frames;
   PVector loc, vel;
 
-  Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {
+  Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
     currentHP = 100;
     maxHP = 100;
     frames = tFrames;
@@ -43,9 +43,16 @@ class Player {
       }
     }
   }
-  
-  void rotateTurret(){
+
+  void rotateCannon() {
     //the turret should follow the direction based on the vector that the mouse creates from the location of the turret
+    float angle;
+    PImage sprite;
+    sprite = loadImage("Tank_cannon00.png");
+    translate(loc.x, loc.y);
+    angle = atan2(mouseY - loc.y, mouseX - loc.x);
+    rotate(angle);
+    imageMode(CENTER);
+    image(sprite, loc.x, loc.y);
   }
-  
 }
