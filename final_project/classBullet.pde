@@ -8,15 +8,20 @@ class Bullet{
     vel = new PVector(-1, 1);
     type = tType;
     if(tType == 0){
-    //sprite = loadImage();
+      sprite = loadImage("Tank_Bullet.png"); //normal bullet
     }
-    //etc...
+    else if(tType == 1){
+      sprite = loadImage("nade.png"); //grenade
+    }
+    
   } 
   
   void display(){
     if (type == 0){
-      //display this image
-      //image();
+      image(sprite);
+    }
+    else if (type == 1){
+      image(sprite);
     }
   }
   
