@@ -56,6 +56,17 @@ class Player {
     image(sprite, 0, 0);
   }
   
+  /********************************************* 1/19/16 -- BULLET UPDATE
+  
+  void shoot(){
+    if (mousePressed == true){
+      if(canShoot){
+        bullets.add(new Bullet());
+        //canShoot == false;
+      }
+    }
+  }
+   *******************************************/  
   
   
   
