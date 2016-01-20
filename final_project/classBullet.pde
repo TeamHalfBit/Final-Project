@@ -12,8 +12,9 @@ class Bullet {
     } else if (tType == 1) {
       sprite = loadImage("nade.png"); //grenade
     }
-
-    Bullet(int tType) {
+  } 
+  
+   Bullet(int tType) {
       vel = new PVector(-1, 1);
       type = tType;
       if (tType == 0) {
@@ -22,13 +23,12 @@ class Bullet {
         sprite = loadImage("nade.png"); //grenade
       }
     }
-  } 
 
   void display() {
     if (type == 0) {
-      image(sprite);
+      image(sprite, loc.x, loc.y);
     } else if (type == 1) {
-      image(sprite);
+      image(sprite, loc.x, loc.y);
     }
   }
 }
