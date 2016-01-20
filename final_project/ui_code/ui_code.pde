@@ -3,15 +3,19 @@ boolean button;
 Button a;
 Button b;
 Button c;
+Button d;
+Button t;
 Health h;
 Ammo am;
 EL el;
 void setup() {
   size(1200, 800);
   screen = 0;
-  a = new Button(200, 650);
-  b = new Button(700, 650);
-  c = new Button(50,650);
+  a = new Button(200, 650); //start button
+  b = new Button(700, 650); //help button
+  c = new Button(50,650); //back button from help screen
+  d = new Button(0,0);
+  //t = new Button(900,0);
  // h = new Health(100);
  // am = new Ammo(50);
  // el = new EL(10);
@@ -22,6 +26,7 @@ void draw() {
     background(0);
     a.display();
     b.display();
+    t.display();
     fill(255);
     textSize(80);
     textAlign(CENTER);
@@ -51,12 +56,31 @@ void draw() {
     textSize(60);
     text("BACK", 200, 720);
   }
+  if (screen == 2) {
+    background(0);
+    d.display();
+    fill(255);
+    textSize(80);
+    text("PAUSE", width/2, 200);
+    textSize(60);
+    noFill();
+    fill(0);
+    text("BACK", 150, 70);
+  }
+    
+    
 }
 void mousePressed() {
   if (b.inRect()) {
     screen = 1;
   }
   if (c.inRect()) {
+    screen = 0;
+  }
+  if (t.inRect()) {
+    screen = 2;
+  }
+  if (d.inRect()) {
     screen = 0;
   }
  /* if (a.inRect()) {
