@@ -67,6 +67,18 @@ void draw() {
     text("BACK", 150, 70);
     
   }
+   if (screen == 3) {
+    background(0);
+    d.display();
+    fill(255);
+    textSize(80);
+    text("GAME OVER", width/2, 200);
+    textSize(60);
+    noFill();
+    fill(0);
+    text("TRY AGAIN", 150, 70);
+    
+  }
   if (keyPressed) {
   if (key == 'p') {
     screen = 2;
