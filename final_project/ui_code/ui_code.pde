@@ -26,7 +26,6 @@ void draw() {
     background(0);
     a.display();
     b.display();
-    t.display();
     fill(255);
     textSize(80);
     textAlign(CENTER);
@@ -66,9 +65,13 @@ void draw() {
     noFill();
     fill(0);
     text("BACK", 150, 70);
+    
   }
-    
-    
+  if (keyPressed) {
+  if (key == 'p') {
+    screen = 2;
+  }
+}
 }
 void mousePressed() {
   if (b.inRect()) {
@@ -77,12 +80,11 @@ void mousePressed() {
   if (c.inRect()) {
     screen = 0;
   }
-  if (t.inRect()) {
-    screen = 2;
-  }
   if (d.inRect()) {
     screen = 0;
   }
  /* if (a.inRect()) {
     screen = idk;*/
 }
+
+    
