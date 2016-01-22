@@ -3,7 +3,6 @@
  All of this will be commented. 
  ********************************/
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
-ArrayList <Enemy> salsa = new ArrayList <Enemy>();
 boolean canShoot = true;
 float canShootCounter;
 int overHeat;

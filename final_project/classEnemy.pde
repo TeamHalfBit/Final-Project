@@ -20,6 +20,7 @@ class Enemy{
    void display(){
      int currentFrame = frameCount%frames;
      image(sprites[currentFrame], loc.x, loc.y);
+     loc.add(vel);
    }
    
    /******************************
@@ -31,6 +32,11 @@ class Enemy{
      }
    }
    ******************************/
-   
+
+   void bounce(){
+     if(loc.x <= 0 && loc.x >= width && loc.y <= 0 && loc.y >= height){
+       vel.mult(-1);
+     }
+   }
 
 }
