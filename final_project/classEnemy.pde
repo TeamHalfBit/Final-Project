@@ -21,6 +21,8 @@ class Enemy{
      int currentFrame = frameCount%frames;
      image(sprites[currentFrame], loc.x, loc.y);
    }
+   
+   /******************************
    boolean hitBox(Bullet b) {
      if (b >= loc.x && b < loc.x + 32 && b >= loc.y && b < loc.y + 32) {
        return true;
@@ -28,7 +30,7 @@ class Enemy{
        return false;
      }
    }
-     
+   ******************************/
    
 
 }

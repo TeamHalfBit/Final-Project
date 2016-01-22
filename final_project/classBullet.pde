@@ -18,7 +18,7 @@ class Bullet {
     loc.x = loc.x + cos(angle/180*PI)*speed;
     loc.y = loc.y + sin(angle/180*PI)*speed;
     fill(0);
-    ellipse(loc.x, loc.y, 5, 5);
+    ellipse(loc.x + 15, loc.y + 5, 5, 5);
     
     if(loc.x > 0 && loc.x < width && loc.y > 0 && loc.y < height){
       //it is true, therefore the bullet is inside
