@@ -4,6 +4,9 @@
  ********************************/
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 boolean canShoot = true;
+float canShootCounter;
+
+int i;
 
 Player p;
 Player turret;
@@ -24,25 +27,13 @@ void draw() {
   background(155); // will the background be created by the graphic/UI designers?
   p.display();
   p.move();
-  //turret.display();
   turret.move();
   turret.rotateCannon();
-  //zero.display();
  
-  /*
-  if(b.appearChance()){
-     b.display();
-  }
-  */
+  p.update();
   
-  //   http://www.openprocessing.org/sketch/118081
-  //   SHOOTING BULLETS EXAMPLE
-  
-  /********************************************* 1/19/16 -- BULLET UPDATE
-  
-  for(int i = bullets.size() - 1; i >= 0; i--){
+  for(i = bullets.size() -1; i >= 0; i--){
     Bullet bullet = bullets.get(i);
-    bullet.shootDir(0);
+    bullet.update();
   }
-  *********************************************/
 }
