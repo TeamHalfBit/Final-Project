@@ -1,6 +1,8 @@
 PImage back1, back2,back3,back4,back5,back6;
 int bg;
 PImage bd;
+float x, y; //placeholder for tank
+PVector loce; //placeholder for enemies
 void setup() {  //setup function called initially, only once
    size(1200,800);
   back1 = loadImage("GrassBackground.jpg");
@@ -10,6 +12,9 @@ void setup() {  //setup function called initially, only once
   back5 = loadImage("Rocks.jpg");
   back6 = loadImage("Water.jpg");
   bg = (int)random(1,7);
+  loce = new PVector(20, 20);
+  x = 100;
+  y = 100;
   }
   
   
@@ -35,17 +40,22 @@ void draw() {
   }
   background(bd);
   if (x >= width){
-    x = 0;
+    x = 1;
+    loce.x = -width + loce.x;
     bg = (int)random(1,7);
-  } else if(x <= 0){
-    x = width;
+  } 
+  if(x <= 0){
+    x = width-1;
+    loce.x = width + loce.x;
     bg = (int)random(1,7);
   }
   if (y >= height){
-    y = 0;
+    y = 1;
+    loce.y = -height + loce.y;
     bg = (int)random(1,7);
   }else if(y <= 0){
-    y = height;
+    y = height - 1;
+    loce.y = height + loce.y;
     bg = (int)random(1,7);
   }
 }
