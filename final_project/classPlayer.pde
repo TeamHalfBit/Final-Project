@@ -49,11 +49,13 @@ class Player {
     float angle;
     PImage sprite;
     sprite = loadImage("Tank_cannon00.png");
+    pushMatrix();
     translate(loc.x, loc.y);
     angle = atan2(mouseY - loc.y, mouseX - loc.x);
     rotate(angle + HALF_PI);
     imageMode(CENTER);
     image(sprite, 0, 0);
+    popMatrix();
   }
   
   void update(){

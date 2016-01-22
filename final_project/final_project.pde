@@ -6,6 +6,7 @@ ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 ArrayList <Enemy> salsa = new ArrayList <Enemy>();
 boolean canShoot = true;
 float canShootCounter;
+int overHeat;
 
 int i;
 
@@ -32,8 +33,8 @@ void draw() {
   p.display();
   p.move();
   turret.move();
-  //turret.rotateCannon();
- 
+  turret.rotateCannon();
+  
   p.update();
   
   for(i = bullets.size() -1; i >= 0; i--){

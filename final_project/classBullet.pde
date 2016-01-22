@@ -15,6 +15,7 @@ class Bullet {
   
   
   void update(){
+    
     loc.x = loc.x + cos(angle/180*PI)*speed;
     loc.y = loc.y + sin(angle/180*PI)*speed;
     fill(0);
