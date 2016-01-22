@@ -12,6 +12,7 @@ int i;
 int count = 5;
 Player p;
 Player turret;
+Enemy salsa;
 
 //Box b;
 //Bullet zero;
@@ -21,6 +22,7 @@ void setup() {
   size(1200, 800);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
+  salsa = new Enemy(800, 600, -3, 3, 10, 10, "Salsa", 2, ".png", 1);
   //b = new Box(random(width), random(height));
   //zero = new Bullet(0);
   
@@ -41,5 +43,17 @@ void draw() {
     bullet.update();
   }
   
+  salsa.display();
+
+  /****************************************
+  
+  if(salsa.hitBox(bullet) == true){
+    salsa.currentHP = salsa.currentHP - 1;
+  }
+  if(salsa.currentHP = 0){
+    //she ded
+  }
+  
+  **************************************/
   
 }

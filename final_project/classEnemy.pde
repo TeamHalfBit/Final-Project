@@ -20,7 +20,7 @@ class Enemy{
    void display(){
      int currentFrame = frameCount%frames;
      image(sprites[currentFrame], loc.x, loc.y);
-     loc.add(vel);
+     //loc.add(vel);
    }
    
    /******************************
@@ -38,5 +38,7 @@ class Enemy{
        vel.mult(-1);
      }
    }
-
+  
+  //if dist between enemy and player is [something], then they move/atk/etc.
+  
 }
