@@ -20,6 +20,7 @@ class Bullet {
     
     if(loc.x < 0 && loc.x > width && loc.y < 0 && loc.y > height){
       bullets.remove(i);
+      println("remove");
     }
   }
 }
