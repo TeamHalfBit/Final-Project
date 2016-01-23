@@ -1,4 +1,5 @@
 int screen;
+PImage background1, background2, background3;
 boolean button;
 Button a;
 Button b;
@@ -10,6 +11,8 @@ Ammo am;
 EL el;
 void setup() {
   size(1200, 800);
+  background1 = loadImage("GrassBackground.jpg");
+  background2 = loadImage("Sandbackground.jpg");
   screen = 0;
   a = new Button(200, 650); //start button
   b = new Button(700, 650); //help button
@@ -23,7 +26,7 @@ void setup() {
 
 void draw() {
   if (screen == 0) {
-    background(0);
+    background(background1);
     a.display();
     b.display();
     fill(255);
@@ -42,7 +45,7 @@ void draw() {
     text("HELP", 850, 720);
   }
   if (screen == 1) {
-    background(0);
+    background(background2);
     c.display();
     fill(255);
     textSize(30);

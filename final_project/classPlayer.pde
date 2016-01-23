@@ -49,25 +49,30 @@ class Player {
     float angle;
     PImage sprite;
     sprite = loadImage("Tank_cannon00.png");
+    pushMatrix();
     translate(loc.x, loc.y);
     angle = atan2(mouseY - loc.y, mouseX - loc.x);
     rotate(angle + HALF_PI);
     imageMode(CENTER);
     image(sprite, 0, 0);
+    popMatrix();
   }
   
-  /********************************************* 1/19/16 -- BULLET UPDATE
-  
-  void shoot(){
-    if (mousePressed == true){
-      if(canShoot){
-        bullets.add(new Bullet());
-        //canShoot == false;
+  void update(){
+    if(mousePressed == true){
+      if(canShoot == true){
+        bullets.add(new Bullet(loc.x, loc.y));
+        canShoot = false;
+        canShootCounter = 0;
+      }
+    }
+    if(canShoot == false){
+      canShootCounter++;
+      if(canShootCounter == 5){
+        canShoot = true;
       }
     }
   }
-   *******************************************/  
-  
   
   
   

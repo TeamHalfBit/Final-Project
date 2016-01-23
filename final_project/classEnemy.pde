@@ -20,8 +20,25 @@ class Enemy{
    void display(){
      int currentFrame = frameCount%frames;
      image(sprites[currentFrame], loc.x, loc.y);
+     //loc.add(vel);
    }
    
-   
+   /******************************
+   boolean hitBox(Bullet b) {
+     if (b >= loc.x && b < loc.x + 32 && b >= loc.y && b < loc.y + 32) {
+       return true;
+     } else {
+       return false;
+     }
+   }
+   ******************************/
 
+   void bounce(){
+     if(loc.x <= 0 && loc.x >= width && loc.y <= 0 && loc.y >= height){
+       vel.mult(-1);
+     }
+   }
+  
+  //if dist between enemy and player is [something], then they move/atk/etc.
+  
 }
