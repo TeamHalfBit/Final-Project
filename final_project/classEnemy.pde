@@ -20,22 +20,35 @@ class Enemy{
    void display(){
      int currentFrame = frameCount%frames;
      image(sprites[currentFrame], loc.x, loc.y);
-     //loc.add(vel);
+     loc.add(vel);
    }
    
-   /******************************
+   /************************************
    boolean hitBox(Bullet b) {
-     if (b >= loc.x && b < loc.x + 32 && b >= loc.y && b < loc.y + 32) {
+     if (b >= loc.x && b =< loc.x + 32 && b >= loc.y && b =< loc.y + 32) {
        return true;
      } else {
        return false;
      }
    }
-   ******************************/
+  ***************************************/
+
+  
+  boolean contactsWith(Bullet b){
+    if(loc.dist(b.loc) < b.loc.x + loc.x + (loc.x + 32) + b.loc.y + (loc.y + 32)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+ 
 
    void bounce(){
-     if(loc.x <= 0 && loc.x >= width && loc.y <= 0 && loc.y >= height){
-       vel.mult(-1);
+     if(loc.x <= 0 || loc.x >= width){ 
+       vel.x *= -1;
+     }
+     if(loc.y <= 0 || loc.y >= height){
+       vel.y *= -1;
      }
    }
   

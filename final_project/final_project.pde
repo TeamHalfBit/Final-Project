@@ -44,16 +44,16 @@ void draw() {
   }
   
   salsa.display();
+  salsa.bounce();
 
-  /****************************************
-  
-  if(salsa.hitBox(bullet) == true){
+  /*********************************
+  if(salsa.contactsWith(bullets) == true){
     salsa.currentHP = salsa.currentHP - 1;
   }
-  if(salsa.currentHP = 0){
-    //she ded
-  }
   
-  **************************************/
+  if(salsa.currentHP <= 0){
+    println("she ded");
+  }
+  *********************************/
   
 }
