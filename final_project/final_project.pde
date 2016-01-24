@@ -87,3 +87,30 @@ void draw() {
   }
   *********************************/
   
+  if (p.loc.x >= width){
+    p.loc.x = 1;
+    bg = (int)random(1,7);
+  } 
+  if(p.loc.x <= 0){
+    p.loc.x = width-1;
+    bg = (int)random(1,7);
+  }
+  if (p.loc.y >= height){
+    p.loc.y = 1;
+    bg = (int)random(1,7);
+  }
+  if(p.loc.y <= 0){
+    p.loc.y = height - 1;
+    bg = (int)random(1,7);
+  }
+}
+
+  void keyPressed()
+  {
+    p.keys.put(key, true);
+  }
+  
+  void keyReleased()
+  {
+    p.keys.remove(key);
+  }
