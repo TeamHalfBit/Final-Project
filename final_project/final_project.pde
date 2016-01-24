@@ -6,7 +6,9 @@ ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 boolean canShoot = true;
 float canShootCounter;
 int overHeat;
-
+PImage back1,back2,back3,back4,back5,back6;
+int bg;
+PImage bd;
 int i;
 
 int count = 5;
@@ -27,17 +29,42 @@ void setup() {
   //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
   //b = new Box(random(width), random(height));
   //zero = new Bullet(0);
-  
+  back1 = loadImage("GrassBackground.jpg");
+  back2 = loadImage("IceBackground.jpg");
+  back3 = loadImage("Lava.jpg");
+  back4 = loadImage("Sandbackground.jpg");
+  back5 = loadImage("Rocks.jpg");
+  back6 = loadImage("Water.jpg");
+  bg = (int)random(1,7);
   
 }
 
 void draw() {
-  background(155); // will the background be created by the graphic/UI designers?
+  if(bg == 1){
+    bd = back1;
+  }
+  if(bg == 2){
+    bd = back2;
+  }
+  if(bg == 3){
+    bd = back3;
+  }
+  if(bg == 4){
+    bd = back4;
+  }
+  if(bg == 5){
+    bd = back5;
+  }
+  if(bg == 6){
+    bd = back6;
+  }
+  background(bd);
   p.display();
   p.move();
   turret.move();
   turret.rotateCannon();
-  
+  turret.loc.x = p.loc.x;
+  turret.loc.y = p.loc.y;
   p.update();
   
   for(i = bullets.size() -1; i >= 0; i--){
@@ -60,4 +87,30 @@ void draw() {
   }
   *********************************/
   
+  if (p.loc.x >= width){
+    p.loc.x = 1;
+    bg = (int)random(1,7);
+  } 
+  if(p.loc.x <= 0){
+    p.loc.x = width-1;
+    bg = (int)random(1,7);
+  }
+  if (p.loc.y >= height){
+    p.loc.y = 1;
+    bg = (int)random(1,7);
+  }
+  if(p.loc.y <= 0){
+    p.loc.y = height - 1;
+    bg = (int)random(1,7);
+  }
 }
+
+  void keyPressed()
+  {
+    p.keys.put(key, true);
+  }
+  
+  void keyReleased()
+  {
+    p.keys.remove(key);
+  }
