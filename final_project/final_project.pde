@@ -16,8 +16,6 @@ Player p;
 Player turret;
 Enemy salsa;
 PowerUp health;
-float theta;
-float radius;
 
 //Box b;
 //Bullet zero;
@@ -38,8 +36,7 @@ void setup() {
   back5 = loadImage("Rocks.jpg");
   back6 = loadImage("Water.jpg");
   bg = (int)random(1,7);
-  theta = 0;
-  radius = 175;
+  
 }
 
 void draw() {
@@ -76,26 +73,7 @@ void draw() {
   }
   
   salsa.display();
-  PVector location = salsa.loc;
-  PVector dir;
-  if(dist(p.loc.x,p.loc.y,salsa.loc.x,salsa.loc.y) >= 200){
-    dir = PVector.sub(p.loc, location);
-    dir.normalize();
-    dir.mult(1.5);
-    salsa.vel = dir;
-    theta = (float) getAngle(salsa.loc, p.loc, new PVector(width, p.loc.y));
-  }
-  else
-  {
-   
-    float x = p.loc.x + cos(theta) * radius;
-    float y = p.loc.y + sin(theta) * radius;
-    
-    theta += TWO_PI / 400;
-    PVector circle = new PVector(x, y);
-    PVector velocity = PVector.sub(circle, salsa.loc);
-    salsa.vel = velocity;
-  }
+  salsa.bounce();
 
   //health.display();
   
@@ -126,13 +104,6 @@ void draw() {
     bg = (int)random(1,7);
   }
 }
-  double getAngle(PVector p0, PVector p1, PVector p2)
-  {
-    double a = Math.pow(p1.x - p0.x, 2) + Math.pow(p1.y - p0.y, 2);
-    double b = Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
-    double c = Math.pow(p2.x - p0.x, 2) + Math.pow(p2.y - p0.y, 2);
-    return Math.acos((a+b-c) / Math.sqrt(4*a*b));
-  }
 
   void keyPressed()
   {
