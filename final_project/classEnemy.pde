@@ -24,7 +24,7 @@ class Enemy{
    }
    
   boolean contactsWith(Bullet b){
-    if(b.loc.x + b.diam >= loc.x - 16 && b.loc.x - b.diam <= loc.x + 16 &&
+    if(b.loc.x + b.diam >= loc.x - 16 && b.loc.x - b.diam < loc.x + 16 &&
     b.loc.y + b.diam >= loc.y - 16 && b.loc.y - b.diam < loc.y + 16){
       return true;
     } else {
