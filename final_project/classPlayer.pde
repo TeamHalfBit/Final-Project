@@ -1,9 +1,12 @@
+import java.util.Map;
+
 class Player {
   int currentHP;
   int maxHP;
   PImage[] sprites;
   int frames;
   PVector loc, vel;
+  HashMap<Character, Boolean> keys;
 
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
     currentHP = 100;
@@ -12,6 +15,7 @@ class Player {
     sprites = new PImage[frames];
     loc = new PVector(tX, tY);
     vel = new PVector(tVelX, tVelY);
+    keys = new HashMap<Character, Boolean>();
 
     for (int i = 0; i < sprites.length; i++) {
       sprites[i] = loadImage(prefix + nf(i, digits) + suffix);
@@ -25,22 +29,21 @@ class Player {
 
   void move() {
 
-    if (keyPressed) {
-      if (key == 'w') {
-        loc.add(0, -3); //move up, y
-      }
-
-      if (key == 's') {
-        loc.add(0, 3);  //move down, y
-      }
-
-      if (key == 'a') {
-        loc.add(-3, 0);  //move left, x
-      }
-
-      if (key == 'd') {
-        loc.add(3, 0);  //move right, x
-      }
+    if(keys.containsKey('w'))
+    {
+      loc.add(0, -3);
+    }
+    if(keys.containsKey('s'))
+    {
+      loc.add(0, 3);
+    }
+    if(keys.containsKey('a'))
+    {
+      loc.add(-3, 0);
+    }
+    if(keys.containsKey('d'))
+    {
+      loc.add(3, 0);
     }
   }
 
@@ -49,11 +52,13 @@ class Player {
     float angle;
     PImage sprite;
     sprite = loadImage("Tank_cannon00.png");
+    pushMatrix();
     translate(loc.x, loc.y);
     angle = atan2(mouseY - loc.y, mouseX - loc.x);
     rotate(angle + HALF_PI);
     imageMode(CENTER);
     image(sprite, 0, 0);
+    popMatrix();
   }
   
   void update(){
