@@ -15,6 +15,7 @@ int count = 5;
 Player p;
 Player turret;
 Enemy salsa;
+EnemyBoss JarJar;
 PowerUp health;
 float theta;
 float radius;
@@ -28,6 +29,7 @@ void setup() {
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
   salsa = new Enemy(800, 600, -2, 2, 10, 10, "Salsa", 2, ".png", 9); //10 hp, vel(-3,3)
+  JarJar = new EnemyBoss(random(width),random(height),-5,5,10,10,"Jar_Jar",2,".png",2);
   //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
   //b = new Box(random(width), random(height));
   //zero = new Bullet(0);
@@ -69,7 +71,8 @@ void draw() {
   turret.loc.x = p.loc.x;
   turret.loc.y = p.loc.y;
   p.update();
-  
+  JarJar.display();
+  JarJar.bounce();
   for(i = bullets.size() -1; i >= 0; i--){
     Bullet bullet = bullets.get(i);
     bullet.update();
@@ -143,3 +146,5 @@ void draw() {
   {
     p.keys.remove(key);
   }
+ 
+  
