@@ -23,19 +23,9 @@ class Enemy{
      loc.add(vel);
    }
    
-   /************************************
-   boolean hitBox(Bullet b) {
-     if (b >= loc.x && b =< loc.x + 32 && b >= loc.y && b =< loc.y + 32) {
-       return true;
-     } else {
-       return false;
-     }
-   }
-  ***************************************/
-
-  
   boolean contactsWith(Bullet b){
-    if(loc.dist(b.loc) < b.loc.x + loc.x + (loc.x + 32) + b.loc.y + (loc.y + 32)){
+    if(b.loc.x + b.diam >= loc.x - 16 && b.loc.x - b.diam <= loc.x + 16 &&
+    b.loc.y + b.diam >= loc.y - 16 && b.loc.y - b.diam < loc.y + 16){
       return true;
     } else {
       return false;

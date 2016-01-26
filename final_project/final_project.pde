@@ -3,10 +3,11 @@
  All of this will be commented. 
  ********************************/
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
+//ArrayList <Enemy> salsa = new ArrayList <Enemy>();
 boolean canShoot = true;
 float canShootCounter;
 int overHeat;
-PImage back1,back2,back3,back4,back5,back6;
+PImage back1, back2, back3, back4, back5, back6;
 int bg;
 PImage bd;
 int i;
@@ -35,27 +36,26 @@ void setup() {
   back4 = loadImage("Sandbackground.jpg");
   back5 = loadImage("Rocks.jpg");
   back6 = loadImage("Water.jpg");
-  bg = (int)random(1,7);
-  
+  bg = (int)random(1, 7);
 }
 
 void draw() {
-  if(bg == 1){
+  if (bg == 1) {
     bd = back1;
   }
-  if(bg == 2){
+  if (bg == 2) {
     bd = back2;
   }
-  if(bg == 3){
+  if (bg == 3) {
     bd = back3;
   }
-  if(bg == 4){
+  if (bg == 4) {
     bd = back4;
   }
-  if(bg == 5){
+  if (bg == 5) {
     bd = back5;
   }
-  if(bg == 6){
+  if (bg == 6) {
     bd = back6;
   }
   background(bd);
@@ -66,51 +66,52 @@ void draw() {
   turret.loc.x = p.loc.x;
   turret.loc.y = p.loc.y;
   p.update();
-  
-  for(i = bullets.size() -1; i >= 0; i--){
+
+  for (i = bullets.size() -1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
     bullet.update();
   }
-  
+
   salsa.display();
   salsa.bounce();
 
   //health.display();
-  
-  /*********************************
-  if(salsa.contactsWith(bullets) == true){
-    salsa.currentHP = salsa.currentHP - 1;
+
+  for (Bullet b : bullets) {
+    if (salsa.contactsWith(b) == true) {
+      salsa.currentHP = salsa.currentHP - 1;
+    }
   }
-  
-  if(salsa.currentHP <= 0){
+
+  if (salsa.currentHP <= 0) {
+    
     println("she ded");
   }
-  *********************************/
-  
-  if (p.loc.x >= width){
+
+  if (p.loc.x >= width) {
     p.loc.x = 1;
-    bg = (int)random(1,7);
+    bg = (int)random(1, 7);
   } 
-  if(p.loc.x <= 0){
+  if (p.loc.x <= 0) {
     p.loc.x = width-1;
-    bg = (int)random(1,7);
+    bg = (int)random(1, 7);
   }
-  if (p.loc.y >= height){
+  if (p.loc.y >= height) {
     p.loc.y = 1;
-    bg = (int)random(1,7);
+    bg = (int)random(1, 7);
   }
-  if(p.loc.y <= 0){
+  if (p.loc.y <= 0) {
     p.loc.y = height - 1;
-    bg = (int)random(1,7);
+    bg = (int)random(1, 7);
   }
 }
 
-  void keyPressed()
-  {
-    p.keys.put(key, true);
-  }
-  
-  void keyReleased()
-  {
-    p.keys.remove(key);
-  }
+void keyPressed()
+{
+  p.keys.put(key, true);
+}
+
+void keyReleased()
+{
+  p.keys.remove(key);
+}
