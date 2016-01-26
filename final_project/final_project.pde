@@ -81,6 +81,7 @@ void draw() {
   if (bg == 6) {
     bd = back6;
   }
+  textSize(20);
   background(bd);
   p.display();
   p.move();
@@ -89,6 +90,7 @@ void draw() {
   turret.loc.x = p.loc.x;
   turret.loc.y = p.loc.y;
   p.update();
+
 
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
@@ -120,8 +122,11 @@ void draw() {
     if (s.currentHP <= 0) {
       salsas.remove(j);
     }
+    if (p.contactsWithPlayer(s) == true) {
+      println("I ded");
+      p.currentHP = p.currentHP - 1;
+    }
   }
-
 
   if (p.loc.x >= width) {
     p.loc.x = 1;
