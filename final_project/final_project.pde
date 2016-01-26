@@ -42,7 +42,7 @@ void setup() {
 
 void draw() {  
   if (salsas.size() < 4) {
-  salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
+    salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
   }
   if (bg == 1) {
     bd = back1;
@@ -87,17 +87,19 @@ void draw() {
 
   //health.display();
 
-  for (Enemy j : salsas) {
+  for (int j = salsas.size() - 1; j >= 0; j--) {
+    Enemy s = salsas.get(j);
     for (int i = bullets.size() - 1; i >= 0; i--) {
       Bullet b = bullets.get(i);
-      if (j.currentHP <= 0) {
-      }
-      if (j.contactsWith(b) == true) {
+
+      if (s.contactsWith(b) == true) {
         println("she ded");
-        j.currentHP = j.currentHP - 1;
+        s.currentHP = s.currentHP - 1;
         bullets.remove(i);
-        
       }
+    } 
+    if (s.currentHP <= 0) {
+      salsas.remove(j);
     }
   }
 
