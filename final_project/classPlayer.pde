@@ -10,7 +10,7 @@ class Player {
 
 
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
-    currentHP = 5;
+    currentHP = 1000;
     maxHP = 1000;
     frames = tFrames;
     sprites = new PImage[frames];
@@ -26,6 +26,7 @@ class Player {
   void display() {
     int currentFrame = frameCount%frames;
     image(sprites[currentFrame], loc.x, loc.y);
+    fill(255,0,0);
     text(currentHP + "/"+maxHP, loc.x, loc.y + 70);
     
   }
@@ -88,7 +89,5 @@ class Player {
       }
     }
   }
-  
-  
-  
+
 }

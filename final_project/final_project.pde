@@ -39,9 +39,8 @@ void setup() {
   background1 = loadImage("GrassBackground.jpg");
   background2 = loadImage("Sandbackground.jpg");
   screen = 0;
-  a = new Button(200, 650); //start button
-  b = new Button(700, 650); //help button
-  c = new Button(900, 0); //back button from help screen
+  c = new Button(900, 0);
+  d = new Button(0, 0);
   d = new Button(0, 0);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
@@ -117,6 +116,10 @@ void draw() {
       }
       //health.display();
 
+      if (salsa.currentHP <= 0) {
+          salsas.remove(j);
+        }
+
       if(JarJar.currentHP <= 0) {
           screen = 10;
         }
@@ -134,9 +137,7 @@ void draw() {
           JarJar.currentHP = JarJar.currentHP - 1;  
           bullets.remove(i);
         }
-        if (salsa.currentHP <= 0) {
-          salsas.remove(j);
-        }
+        
         if (p.contactsWithPlayer(salsa) == true) {
           println("I ded");
           p.currentHP = p.currentHP - 1;
@@ -162,7 +163,10 @@ void draw() {
     }
   }
 
+
   if (screen == 0) {
+    a = new Button(200, 650);
+    b = new Button(700, 650);
     background(background1);
     a.display();
     b.display();
@@ -210,7 +214,7 @@ void draw() {
     background(0);
     d.display();
     fill(255);
-    textSize(80);
+    textSize(60);
     text("GAME OVER", width/2, 200);
     textSize(60);
     noFill();
@@ -241,14 +245,17 @@ void draw() {
 }
 
 void mousePressed() {
-  if (b.inRect()) {
-    screen = 1;
-  }
-  if (c.inRect()) {
-    screen = 0;
+  if (screen ==
+    0) {
+    if (b.inRect()) {
+      screen = 1; //helps screen
+    }
+    if (c.inRect()) {
+      screen = 0; //back to menu from help screen
+    }
   }
   if (d.inRect()) {
-    screen = 0;
+    screen = 4; //back to game from pause
   }
   if (a.inRect()) {
     screen = 4;
