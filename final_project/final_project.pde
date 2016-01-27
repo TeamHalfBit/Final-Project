@@ -161,6 +161,8 @@ void draw() {
       p.loc.y = height - 1;
       bg = (int)random(1, 7);
     }
+     fill(0,255,0);
+     text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
   }
 
 
@@ -247,10 +249,10 @@ void draw() {
 void mousePressed() {
   if (screen ==
     0) {
-    if (b.inRect()) {
+  if (b.inRect()) {
       screen = 1; //helps screen
     }
-    if (c.inRect()) {
+  if (c.inRect()) {
       screen = 0; //back to menu from help screen
     }
   }
