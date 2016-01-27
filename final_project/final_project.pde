@@ -94,11 +94,7 @@ void draw() {
     p.update();
     JarJar.display();
     JarJar.bounce();
-    if(JarJar.contactWith(b) == true){
-      println("Yah!");
-      JarJar.currentHP = JarJar.currentHP - 1;  
-      bullets.remove(i);
-    }
+    
     for (int i = bullets.size() - 1; i >= 0; i--) {
       Bullet bullet = bullets.get(i);
       bullet.update();
@@ -115,7 +111,7 @@ void draw() {
       if (dist(p.loc.x, p.loc.y, salsa.loc.x, salsa.loc.y) >= 200) {
         dir = PVector.sub(p.loc, location);
         dir.normalize();
-        dir.mult(1.5);
+        dir.mult(5);
         salsa.vel = dir;
       }
       //health.display();
@@ -128,7 +124,7 @@ void draw() {
           salsa.currentHP = salsa.currentHP - 1;
           bullets.remove(i);
         }
-      } 
+      
         if(JarJar.contactWith(b) == true){
         println("Yah!");
         JarJar.currentHP = JarJar.currentHP - 1;  
@@ -141,6 +137,7 @@ void draw() {
         println("I ded");
         p.currentHP = p.currentHP - 1;
       }
+    }
     }
 
     if (p.loc.x >= width) {
