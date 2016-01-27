@@ -1,11 +1,11 @@
-class Enemy{
+class EnemyBoss{
  int currentHP;
  int maxHP;
  PImage[] sprites; 
  int frames;
- PVector loc, vel;
+ PVector loc, vel,acc;
  
- Enemy(float tX, float tY, float tVelX, float tVelY, int tCurrentHP, int tMaxHP, String prefix, int digits, String suffix, int tFrames){
+ EnemyBoss(float tX, float tY, float tVelX, float tVelY, int tCurrentHP, int tMaxHP, String prefix, int digits, String suffix, int tFrames){
    loc = new PVector(tX, tY);
    vel = new PVector(tVelX, tVelY);
    currentHP = tCurrentHP;
@@ -20,12 +20,26 @@ class Enemy{
    void display(){
      int currentFrame = frameCount%frames;
      image(sprites[currentFrame], loc.x, loc.y);
+     acc = PVector.random2D();
+     acc.mult(1.5);
      loc.add(vel);
+     vel.add(acc);
+     vel.limit(10);
    }
    
+   /************************************
+   boolean hitBox(Bullet b) {
+     if (b >= loc.x && b =< loc.x + 32 && b >= loc.y && b =< loc.y + 32) {
+       return true;
+     } else {
+       return false;
+     }
+   }
+  ***************************************/
+
+  
   boolean contactsWith(Bullet b){
-    if(b.loc.x + b.diam >= loc.x - 16 && b.loc.x + b.diam < loc.x + 16 &&
-    b.loc.y + b.diam >= loc.y - 16 && b.loc.y + b.diam < loc.y + 16){
+    if(loc.dist(b.loc) < b.loc.x + loc.x + (loc.x + 32) + b.loc.y + (loc.y + 32)){
       return true;
     } else {
       return false;
@@ -34,10 +48,10 @@ class Enemy{
  
 
    void bounce(){
-     if(loc.x <= 0 || loc.x >= width){ 
+     if(loc.x - 16 <= 0 || loc.x + 16 >= width){ 
        vel.x *= -1;
      }
-     if(loc.y <= 0 || loc.y >= height){
+     if(loc.y - 16 <= 0 || loc.y + 16 >= height){
        vel.y *= -1;
      }
    }

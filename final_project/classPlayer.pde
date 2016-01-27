@@ -8,9 +8,10 @@ class Player {
   PVector loc, vel;
   HashMap<Character, Boolean> keys;
 
+
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
-    currentHP = 100;
-    maxHP = 100;
+    currentHP = 1000;
+    maxHP = 1000;
     frames = tFrames;
     sprites = new PImage[frames];
     loc = new PVector(tX, tY);
@@ -25,7 +26,19 @@ class Player {
   void display() {
     int currentFrame = frameCount%frames;
     image(sprites[currentFrame], loc.x, loc.y);
+    fill(255,0,0);
+    text(currentHP + "/"+maxHP, loc.x, loc.y + 70);
+    
   }
+    boolean contactsWithPlayer(Enemy e){
+    if(e.loc.x + 16 >= loc.x - 16 && e.loc.x -16 < loc.x + 16 &&
+    e.loc.y + 16 >= loc.y - 16 && e.loc.y - 16 < loc.y + 16){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   void move() {
 
@@ -76,7 +89,5 @@ class Player {
       }
     }
   }
-  
-  
-  
+
 }
