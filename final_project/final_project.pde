@@ -18,8 +18,6 @@ Button b;
 Button c;
 Button d;
 Button t;
-Health h;
-Ammo am;
 EL el;
 
 
@@ -44,11 +42,7 @@ void setup() {
   d = new Button(0,0);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
-  //salsa = new Enemy(800, 600, -2, 2, 10, 10, "Salsa", 2, ".png", 9); //10 hp, vel(-3,3)
   salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
-  //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
-  //b = new Box(random(width), random(height));
-  //zero = new Bullet(0);
   back1 = loadImage("GrassBackground.jpg");
   back2 = loadImage("IceBackground.jpg");
   back3 = loadImage("Lava.jpg");
