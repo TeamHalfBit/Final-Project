@@ -161,8 +161,11 @@ void draw() {
       p.loc.y = height - 1;
       bg = (int)random(1, 7);
     }
-     fill(0,255,0);
-     text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
+     fill(255, 255, 255, 0);
+     //text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
+     rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
+     fill(0, 255, 0);
+     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
   }
 
 
