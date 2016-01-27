@@ -29,6 +29,7 @@ Player turret;
 float theta;
 float radius;
 
+int score;
 //Box b;
 //Bullet zero;
 //Bullet one;
@@ -45,7 +46,7 @@ void setup() {
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
   salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
-  JarJar = new EnemyBoss(random(width), random(height), -5, 5, 10, 10, "Jar_Jar", 2, ".png", 2);
+  JarJar = new EnemyBoss(random(width), random(height), -5, 5, 100, 100, "Jar_Jar", 2, ".png", 2);
   //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
   //b = new Box(random(width), random(height));
   //zero = new Bullet(0);
@@ -116,6 +117,9 @@ void draw() {
       }
       //health.display();
 
+      if(JarJar.currentHP <= 0) {
+          screen = 10;
+        }
       for (int i = bullets.size() - 1; i >= 0; i--) {
         Bullet b = bullets.get(i);
 
@@ -126,18 +130,18 @@ void draw() {
         }
       
         if(JarJar.contactWith(b) == true){
-        println("Yah!");
-        JarJar.currentHP = JarJar.currentHP - 1;  
-        bullets.remove(i);
+          println("Yah!");
+          JarJar.currentHP = JarJar.currentHP - 1;  
+          bullets.remove(i);
+        }
+        if (salsa.currentHP <= 0) {
+          salsas.remove(j);
+        }
+        if (p.contactsWithPlayer(salsa) == true) {
+          println("I ded");
+          p.currentHP = p.currentHP - 1;
+        }
       }
-      if (salsa.currentHP <= 0) {
-        salsas.remove(j);
-      }
-      if (p.contactsWithPlayer(salsa) == true) {
-        println("I ded");
-        p.currentHP = p.currentHP - 1;
-      }
-    }
     }
 
     if (p.loc.x >= width) {
@@ -208,6 +212,18 @@ void draw() {
     fill(255);
     textSize(80);
     text("GAME OVER", width/2, 200);
+    textSize(60);
+    noFill();
+    fill(0);
+    text("TRY AGAIN", 150, 70);
+  }
+   if (screen == 10) {
+    background(0);
+    d.display();
+    fill(255);
+    textSize(80);
+    text("GAME OVER", width/2, 200);
+    text("YOU WIN", width/2, 300);
     textSize(60);
     noFill();
     fill(0);
