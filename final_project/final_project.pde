@@ -101,8 +101,8 @@ void draw() {
 
     for (int i = bullets.size() - 1; i >= 0; i--) {
 
-      JarJar.display();
-      JarJar.bounce();
+      //JarJar.display();
+      // JarJar.bounce();
 
 
       Bullet bullet = bullets.get(i);
@@ -160,6 +160,7 @@ void draw() {
       bg = (int)random(1, 7);
     }
   }
+
 
   if (screen == 0) {
     a = new Button(200, 650);
@@ -230,20 +231,20 @@ void draw() {
 }
 
 void mousePressed() {
-  if(screen == 0) {
-  if (b.inRect()) {
-    screen = 1; //helps screen
-  }
-  if (c.inRect()) {
-    screen = 0; //back to menu from help screen
-  }
+  if (screen ==
+    0) {
+    if (b.inRect()) {
+      screen = 1; //helps screen
+    }
+    if (c.inRect()) {
+      screen = 0; //back to menu from help screen
+    }
   }
   if (d.inRect()) {
     screen = 4; //back to game from pause
   }
   if (a.inRect()) {
     screen = 4;
-    
   }
 }
 
