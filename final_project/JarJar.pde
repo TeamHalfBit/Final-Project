@@ -35,18 +35,12 @@ class EnemyBoss{
   }
 
    void bounce(){
- if (loc.x >= width) {
-      loc.x = 1;
-    }
-    if (loc.x <= 0) {
-      loc.x = width-1;
-    }
-    if (loc.y >= height) {
-      loc.y = 1;
-    }
-    if (loc.y <= 0) {
-      loc.y = height - 1;
-    }
+     if(loc.x - 16 <= 0 || loc.x + 16 >= width){ 
+       vel.x *= -1;
+     }
+     if(loc.y - 16 <= 0 || loc.y + 16 >= height){
+       vel.y *= -1;
+     }
    }
   
   //if dist between enemy and player is [something], then they move/atk/etc.
