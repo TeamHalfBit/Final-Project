@@ -44,7 +44,7 @@ void setup() {
   d = new Button(0, 0);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
-  salsas.add(new Enemy(random(width), random(height), -2, 2, 1, 1, "Salsa", 2, ".png", 9));
+  salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
   JarJar = new EnemyBoss(random(width), random(height), -5, 5, 100, 100, "Jar_Jar", 2, ".png", 2);
   //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
   //b = new Box(random(width), random(height));
@@ -111,7 +111,7 @@ void draw() {
       if (dist(p.loc.x, p.loc.y, salsa.loc.x, salsa.loc.y) >= 200) {
         dir = PVector.sub(p.loc, location);
         dir.normalize();
-        dir.mult(7.5);
+        dir.mult(5);
         salsa.vel = dir;
       }
       //health.display();
