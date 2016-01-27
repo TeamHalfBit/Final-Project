@@ -196,6 +196,10 @@ void draw() {
     text("TRY AGAIN", 150, 70);
     
   }
+  if (p.currentHP == 0) {
+    screen = 3;
+    p.currentHP = 1000;
+  }
   if (keyPressed) {
   if (key == 'p') {
     screen = 2;
@@ -210,7 +214,7 @@ void mousePressed() {
     screen = 0;
   }
   if (d.inRect()) {
-    screen = 4;
+    screen = 0;
   }
   if (a.inRect()) {
     screen = 4;

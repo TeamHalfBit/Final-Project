@@ -7,10 +7,10 @@ class Player {
   int frames;
   PVector loc, vel;
   HashMap<Character, Boolean> keys;
-  Health h;
+
 
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
-    currentHP = 1000;
+    currentHP = 5;
     maxHP = 1000;
     frames = tFrames;
     sprites = new PImage[frames];
@@ -37,6 +37,7 @@ class Player {
       return false;
     }
   }
+
 
   void move() {
 
