@@ -23,11 +23,11 @@ class EnemyBoss{
      acc = PVector.random2D();
      loc.add(vel);
      vel.add(acc);
-     vel.limit(8);
+     vel.limit(10);
    }
   boolean contactWith(Bullet b){
-    if(b.loc.x + b.diam >= loc.x - 16 && b.loc.x + b.diam < loc.x + 16 &&
-    b.loc.y + b.diam >= loc.y - 16 && b.loc.y + b.diam < loc.y + 16){
+    if(b.loc.x + b.diam >= loc.x - 32 && b.loc.x + b.diam < loc.x + 32 &&
+    b.loc.y + b.diam >= loc.y - 32 && b.loc.y + b.diam < loc.y + 32){
       return true;
     } else {
       return false;
