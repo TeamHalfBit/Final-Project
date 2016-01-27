@@ -116,6 +116,10 @@ void draw() {
       }
       //health.display();
 
+      if (salsa.currentHP <= 0) {
+          salsas.remove(j);
+        }
+
       if(JarJar.currentHP <= 0) {
           screen = 10;
         }
@@ -133,9 +137,7 @@ void draw() {
           JarJar.currentHP = JarJar.currentHP - 1;  
           bullets.remove(i);
         }
-        if (salsa.currentHP <= 0) {
-          salsas.remove(j);
-        }
+        
         if (p.contactsWithPlayer(salsa) == true) {
           println("I ded");
           p.currentHP = p.currentHP - 1;
