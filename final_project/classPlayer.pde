@@ -10,8 +10,8 @@ class Player {
 
 
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
-    currentHP = 1000; //Dynamic health that changes
-    maxHP = 1000; //Maxmimum health available
+    currentHP = 500; //Dynamic health that changes
+    maxHP = 500; //Maxmimum health available
     frames = tFrames;
     sprites = new PImage[frames];
     loc = new PVector(tX, tY);
@@ -38,7 +38,14 @@ class Player {
       return false;
     }
   }
-
+    boolean contactsWithPlayer(EnemyBoss j){
+    if(j.loc.x + 16 >= loc.x - 16 && j.loc.x -16 < loc.x + 16 &&
+    j.loc.y + 16 >= loc.y - 16 && j.loc.y - 16 < loc.y + 16){ //creates the sprite hitbox 32x32
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   void move() { //movement keys can be pressed simultaniously with this.
 

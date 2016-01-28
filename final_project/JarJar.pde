@@ -33,7 +33,14 @@ class EnemyBoss{
       return false;
     }
   }
-
+   boolean contactWithPlayer(Enemy e){
+    if(e.loc.x + 16 >= loc.x - 16 && e.loc.x -16 < loc.x + 16 &&
+    e.loc.y + 16 >= loc.y - 16 && e.loc.y - 16 < loc.y + 16){ //creates the sprite hitbox 32x32
+      return true;
+    } else {
+      return false;
+    }
+   }
    void bounce(){
  if (loc.x >= width) {
       loc.x = 1;
@@ -48,7 +55,7 @@ class EnemyBoss{
       loc.y = height - 1;
     }
    }
-  
+   
   //if dist between enemy and player is [something], then they move/atk/etc.
   
 }
