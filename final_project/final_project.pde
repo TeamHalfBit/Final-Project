@@ -150,7 +150,7 @@ void draw() {
       }
     }
 
-    if (p.loc.x >= width) { //warp player
+    if (p.loc.x >= width) { //warp player to different backgrounds and reverses location
       p.loc.x = 1;
       bg = (int)random(1, 7);
     } 
@@ -181,15 +181,15 @@ void draw() {
      time++;
      text(time, 50, 50);
    }
-  }
+  
 
 
   if (screen == 0) { //main menu
     a = new Button(200, 650);
     b = new Button(700, 650);
     background(background1);
-    a.display();
-    b.display();
+    a.display(); //displays the start button
+    b.display(); //dispalys the help button
     fill(255);
     textSize(80);
     textAlign(CENTER);
@@ -210,7 +210,7 @@ void draw() {
   }
   if (screen == 1) { //help screen
     background(background2);
-    c.display();
+    c.display(); //displays the back to main menu button
     fill(255);
     textSize(30);
     text("Use the WASD on your keyboard to move your character", width/2, 200);
@@ -225,7 +225,7 @@ void draw() {
   }
   if (screen == 2) { //pause screen
     background(0);
-    d.display();
+    d.display(); //displays back button from the pause menu
     fill(255);
     textSize(80);
     text("PAUSE", width/2, 200);
@@ -236,7 +236,7 @@ void draw() {
   }
   if (screen == 3) { //game over screen
     background(0);
-    d.display();
+    d.display(); //try again button to the main menu
     fill(255);
     textSize(60);
     text("GAME OVER", width/2, 200);
@@ -249,7 +249,7 @@ void draw() {
   }
   if (screen == 10) { //game over (win) screen
     background(0);
-    t.display();
+    t.display(); //try again button to the main menu
     fill(0,random(256),225);
     text("CONGRATZ", width/2, 200);
     text("YOU WIN", width/2, 300);
