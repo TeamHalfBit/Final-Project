@@ -23,11 +23,11 @@ class EnemyBoss{
      acc = PVector.random2D();
      loc.add(vel);
      vel.add(acc);
-     vel.limit(8);
+     vel.limit(10);
    }
   boolean contactWith(Bullet b){
-    if(b.loc.x + b.diam >= loc.x - 16 && b.loc.x + b.diam < loc.x + 16 &&
-    b.loc.y + b.diam >= loc.y - 16 && b.loc.y + b.diam < loc.y + 16){
+    if(b.loc.x + b.diam >= loc.x - 32 && b.loc.x + b.diam < loc.x + 32 &&
+    b.loc.y + b.diam >= loc.y - 32 && b.loc.y + b.diam < loc.y + 32){
       return true;
     } else {
       return false;
@@ -35,12 +35,18 @@ class EnemyBoss{
   }
 
    void bounce(){
-     if(loc.x - 16 <= 0 || loc.x + 16 >= width){ 
-       vel.x *= -1;
-     }
-     if(loc.y - 16 <= 0 || loc.y + 16 >= height){
-       vel.y *= -1;
-     }
+ if (loc.x >= width) {
+      loc.x = 1;
+    }
+    if (loc.x <= 0) {
+      loc.x = width-1;
+    }
+    if (loc.y >= height) {
+      loc.y = 1;
+    }
+    if (loc.y <= 0) {
+      loc.y = height - 1;
+    }
    }
   
   //if dist between enemy and player is [something], then they move/atk/etc.
