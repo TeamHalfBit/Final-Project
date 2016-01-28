@@ -139,18 +139,18 @@ void draw() {
           bullets.remove(i);
         }
       }
-      if (p.contactsWithPlayer(JarJar) == true){
+      if (p.contactsWithPlayer(JarJar) == true){// if player is hit by JarJar, lose health
         println("we ded");
         p.currentHP = p.currentHP - 5;
       }
-      if (p.contactsWithPlayer(salsa) == true) {
+      if (p.contactsWithPlayer(salsa) == true) //if player is hit by salsa, remove salsa and health
         println("I ded");
         salsa.currentHP = salsa.currentHP - 2;
         p.currentHP = p.currentHP - 5;
       }
     }
 
-    if (p.loc.x >= width) {
+    if (p.loc.x >= width) { //warp player
       p.loc.x = 1;
       bg = (int)random(1, 7);
     } 
@@ -166,17 +166,17 @@ void draw() {
       p.loc.y = height - 1;
       bg = (int)random(1, 7);
     }
-    fill(255, 255, 255, 0);
+    fill(255, 255, 255, 0); //JarJar health bar
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
     fill(0, 255, 0);
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
     
-    fill(255,0,0);
+    fill(255,0,0); //play health bar
     rect(p.loc.x - 50, p.loc.y+25, 500/5, 10);
     fill(0, 255, 0);
     rect(p.loc.x - 50, p.loc.y+25, p.currentHP/5, 10);
     
-   if(screen == 4){
+   if(screen == 4){ //timer
      fill(0,0,255);
      time++;
      text(time, 50, 50);
@@ -184,7 +184,7 @@ void draw() {
   }
 
 
-  if (screen == 0) {
+  if (screen == 0) { //main menu
     a = new Button(200, 650);
     b = new Button(700, 650);
     background(background1);
@@ -208,7 +208,7 @@ void draw() {
     text("HELP", 850, 720);
     time = 0;
   }
-  if (screen == 1) {
+  if (screen == 1) { //help screen
     background(background2);
     c.display();
     fill(255);
@@ -223,7 +223,7 @@ void draw() {
     textSize(60);
     text("BACK", 1050, 70);
   }
-  if (screen == 2) {
+  if (screen == 2) { //pause screen
     background(0);
     d.display();
     fill(255);
@@ -234,7 +234,7 @@ void draw() {
     fill(0);
     text("BACK", 150, 70);
   }
-  if (screen == 3) {
+  if (screen == 3) { //game over screen
     background(0);
     d.display();
     fill(255);
@@ -247,7 +247,7 @@ void draw() {
     text("TRY AGAIN", 150, 70);
     
   }
-  if (screen == 10) {
+  if (screen == 10) { //game over (win) screen
     background(0);
     t.display();
     fill(0,random(256),225);
@@ -263,11 +263,11 @@ void draw() {
   if (p.currentHP <= 0) {
     screen = 3;
     p.currentHP = 500;
-    JarJar.currentHP = 100;
+    JarJar.currentHP = 100; //reset game variables
   }
   if (keyPressed) {
     if (key == 'p') {
-      screen = 2;
+      screen = 2; //pause screen
     }
   }
 }
@@ -278,7 +278,7 @@ void mousePressed() {
       screen = 1; //helps screen
     }
     if (a.inRect()) {
-      screen = 4;
+      screen = 4; //gameplay
     }
   }
   if (screen ==1) {
@@ -293,12 +293,12 @@ void mousePressed() {
   }
   if (screen == 3) {
     if (d.inRect()) {
-      screen = 0;
+      screen = 0; //main menu
     }
   }
   if (screen == 10) {
     if (t.inRect()) {
-     screen = 0;
+     screen = 0; //main menu
     }
   }
 }
@@ -307,10 +307,10 @@ void mousePressed() {
 
 void keyPressed()
 {
-  p.keys.put(key, true);
+  p.keys.put(key, true); //adds key to hash map
 }
 
-void keyReleased()
+void keyReleased() //removes key from hash map
 {
   p.keys.remove(key);
 }
