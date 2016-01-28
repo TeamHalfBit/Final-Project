@@ -13,18 +13,17 @@ PImage bd;
 int screen;
 PImage background1, background2, background3;
 boolean button;
-Button a;
+Button a; //declared multiple buttons for UI
 Button b;
 Button c;
 Button d;
 Button t;
-EL el;
-EnemyBoss JarJar;
-PowerUp health;
+EnemyBoss JarJar; //declared JarJar
+PowerUp health; //Is this gonna get added in?
 
 int count = 5;
-Player p;
-Player turret;
+Player p; //Declares the player
+Player turret; //Declares the turret
 
 float theta;
 float radius;

@@ -10,8 +10,8 @@ class Player {
 
 
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
-    currentHP = 1000;
-    maxHP = 1000;
+    currentHP = 1000; //Dynamic health that changes
+    maxHP = 1000; //Maxmimum health available
     frames = tFrames;
     sprites = new PImage[frames];
     loc = new PVector(tX, tY);
@@ -19,7 +19,7 @@ class Player {
     keys = new HashMap<Character, Boolean>();
 
     for (int i = 0; i < sprites.length; i++) {
-      sprites[i] = loadImage(prefix + nf(i, digits) + suffix);
+      sprites[i] = loadImage(prefix + nf(i, digits) + suffix); //Creates the animation for the tank treads
     }
   }
 
@@ -32,7 +32,7 @@ class Player {
   }
     boolean contactsWithPlayer(Enemy e){
     if(e.loc.x + 16 >= loc.x - 16 && e.loc.x -16 < loc.x + 16 &&
-    e.loc.y + 16 >= loc.y - 16 && e.loc.y - 16 < loc.y + 16){
+    e.loc.y + 16 >= loc.y - 16 && e.loc.y - 16 < loc.y + 16){ //creates the sprite hitbox 32x32
       return true;
     } else {
       return false;
@@ -40,7 +40,7 @@ class Player {
   }
 
 
-  void move() {
+  void move() { //movement keys can be pressed simultaniously with this.
 
     if(keys.containsKey('w'))
     {
@@ -75,7 +75,7 @@ class Player {
   }
   
   void update(){
-    if(mousePressed == true){
+    if(mousePressed == true){ //Places the bullets shot towards the center of the player and shot to wherever the mouse is
       if(canShoot == true){
         bullets.add(new Bullet(loc.x, loc.y));
         canShoot = false;

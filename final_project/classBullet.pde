@@ -26,7 +26,7 @@ class Bullet {
   boolean gone() {
     if (loc.x > 0 && loc.x < width && loc.y > 0 && loc.y < height) {
       //it is true, therefore the bullet is inside
-      return false;
+      return false; //Bullet will disapear once in comes in contact with any of the play area sides
     } else {
       println("remove");
       return true;
