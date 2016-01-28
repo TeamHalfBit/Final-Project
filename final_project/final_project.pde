@@ -254,7 +254,7 @@ void draw() {
     text("CONGRATZ", width/2, 200);
     text("YOU WIN", width/2, 300);
     text("Your total time is: " + time, width/2, height/2);
-    textSize(60);
+    textSize(40);
     noFill();
     fill(0);
     text("TRY AGAIN", 150, 70);
