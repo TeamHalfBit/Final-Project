@@ -2,7 +2,7 @@
  If you have any suggestions, please put them here or make note of them here. 
  All of this will be commented. 
  ********************************/
-ArrayList <Bullet> bullets = new ArrayList <Bullet>();
+ArrayList <Bullet> bullets = new ArrayList <Bullet>(); //declare variables
 ArrayList <Enemy> salsas = new ArrayList <Enemy>();
 ArrayList <PowerUp> health = new ArrayList <PowerUp>();
 boolean canShoot = true;
@@ -20,7 +20,7 @@ int count = 5;
 Player p; //Declares the player
 Player turret; //Declares the turret
 
-void setup() {
+void setup() { //initialized classes
   size(1200, 800);
   background1 = loadImage("GrassBackground.jpg");
   background2 = loadImage("Sandbackground.jpg");
@@ -47,7 +47,7 @@ void setup() {
 
 void draw() { 
   if (screen == 4) {
-    if (salsas.size() < 4) {
+    if (salsas.size() < 4) { //draws entities and background
       salsas.add(new Enemy(random(width), random(height), -2, 2, 2, 2, "Salsa", 2, ".png", 9));
     }
     if (health.size() < 2){
@@ -83,7 +83,7 @@ void draw() {
     JarJar.display();
     JarJar.bounce();
     
-    for (int i = health.size() - 1; i >= 0; i--){
+    for (int i = health.size() - 1; i >= 0; i--){ //health powerup
       PowerUp hp = health.get(i);
       hp.display();
       if(hp.contactsWithBox(p)){
@@ -95,36 +95,36 @@ void draw() {
       }
     }
 
-    for (int i = bullets.size() - 1; i >= 0; i--) {
+    for (int i = bullets.size() - 1; i >= 0; i--) { //limit bullets
       Bullet bullet = bullets.get(i);
       bullet.update();
       if (bullet.gone()) {
         bullets.remove(i);
       }
     }
-    for (int j = salsas.size() - 1; j >= 0; j--) {  
+    for (int j = salsas.size() - 1; j >= 0; j--) {  //display slsa
       Enemy salsa = salsas.get(j);
       salsa.display();
       salsa.bounce();
-      PVector location = salsa.loc;
+      PVector location = salsa.loc; //declare variables
       PVector dir;
-      if (dist(p.loc.x, p.loc.y, salsa.loc.x, salsa.loc.y) >= 200) {
-        dir = PVector.sub(p.loc, location);
-        dir.normalize();
-        dir.mult(7);
-        salsa.vel = dir;
+      if (dist(p.loc.x, p.loc.y, salsa.loc.x, salsa.loc.y) >= 200) { //make a pause in tracking
+        dir = PVector.sub(p.loc, location); //get dirction of player
+        dir.normalize(); //makes direction into vector
+        dir.mult(7); //multiplies the speed
+        salsa.vel = dir; //sets velocity to player
       }
 
-      if (salsa.currentHP <= 0) {
+      if (salsa.currentHP <= 0) { //if salsa die
         salsas.remove(j);
       }
 
-      if (JarJar.currentHP <= 0) {
+      if (JarJar.currentHP <= 0) { //if JarJar dies
         screen = 10;
         JarJar.currentHP = 100;
         p.currentHP = 500;
       }
-      for (int i = bullets.size() - 1; i >= 0; i--) {
+      for (int i = bullets.size() - 1; i >= 0; i--) { //if X interacts will a bullet
         Bullet b = bullets.get(i);
 
         if (salsa.contactsWith(b) == true) {
@@ -145,7 +145,7 @@ void draw() {
       }
       if (p.contactsWithPlayer(salsa) == true) {
         println("I ded");
-        salsa.currentHP = salsa.currentHP - 2;
+        salsa.currentHP = salsa.currentHP - 2; //kills salsa if it hits the player
         p.currentHP = p.currentHP - 5;
       }
     }
@@ -166,17 +166,17 @@ void draw() {
       p.loc.y = height - 1;
       bg = (int)random(1, 7);
     }
-    fill(255, 255, 255, 0);
+    fill(255, 255, 255, 0); //JarJar health
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
     fill(0, 255, 0);
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
     
-    fill(255,0,0);
+    fill(255,0,0); //player health
     rect(p.loc.x - 50, p.loc.y+25, 500/5, 10);
     fill(0, 255, 0);
     rect(p.loc.x - 50, p.loc.y+25, p.currentHP/5, 10);
     
-   if(screen == 4){
+   if(screen == 4){ //timer
      fill(0,0,255);
      time++;
      text(time, 50, 50);
@@ -184,7 +184,7 @@ void draw() {
   }
 
 
-  if (screen == 0) {
+  if (screen == 0) { //menus
     a = new Button(200, 650);
     b = new Button(700, 650);
     background(background1);
@@ -305,7 +305,7 @@ void mousePressed() {
 
 
 
-void keyPressed()
+void keyPressed() 
 {
   p.keys.put(key, true);
 }
