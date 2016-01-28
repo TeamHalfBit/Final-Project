@@ -13,22 +13,22 @@ PImage bd;
 int screen;
 PImage background1, background2, background3;
 boolean button;
-Button a;
+Button a; //declared multiple buttons for UI
 Button b;
 Button c;
 Button d;
 Button t;
-EL el;
-EnemyBoss JarJar;
-PowerUp health;
+EnemyBoss JarJar; //declared JarJar
+PowerUp health; //Is this gonna get added in?
 
 int count = 5;
-Player p;
-Player turret;
+Player p; //Declares the player
+Player turret; //Declares the turret
 
 float theta;
 float radius;
 
+int score;
 //Box b;
 //Bullet zero;
 //Bullet one;
@@ -38,14 +38,13 @@ void setup() {
   background1 = loadImage("GrassBackground.jpg");
   background2 = loadImage("Sandbackground.jpg");
   screen = 0;
-  a = new Button(200, 650); //start button
-  b = new Button(700, 650); //help button
-  c = new Button(900, 0); //back button from help screen
+  c = new Button(900, 0);
+  d = new Button(0, 0);
   d = new Button(0, 0);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
-  salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
-  JarJar = new EnemyBoss(random(width), random(height), -5, 5, 10, 10, "Jar_Jar", 2, ".png", 2);
+  salsas.add(new Enemy(random(width), random(height), -2, 2, 1, 1, "Salsa", 2, ".png", 9));
+  JarJar = new EnemyBoss(random(width), random(height), -5, 5, 100, 100, "Jar_Jar", 2, ".png", 2);
   //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
   //b = new Box(random(width), random(height));
   //zero = new Bullet(0);
@@ -94,7 +93,7 @@ void draw() {
     p.update();
     JarJar.display();
     JarJar.bounce();
-    
+
     for (int i = bullets.size() - 1; i >= 0; i--) {
       Bullet bullet = bullets.get(i);
       bullet.update();
@@ -111,11 +110,18 @@ void draw() {
       if (dist(p.loc.x, p.loc.y, salsa.loc.x, salsa.loc.y) >= 200) {
         dir = PVector.sub(p.loc, location);
         dir.normalize();
-        dir.mult(5);
+        dir.mult(7.5);
         salsa.vel = dir;
       }
       //health.display();
 
+      if (salsa.currentHP <= 0) {
+        salsas.remove(j);
+      }
+
+      if (JarJar.currentHP <= 0) {
+        screen = 10;
+      }
       for (int i = bullets.size() - 1; i >= 0; i--) {
         Bullet b = bullets.get(i);
 
@@ -124,20 +130,17 @@ void draw() {
           salsa.currentHP = salsa.currentHP - 1;
           bullets.remove(i);
         }
-      
-        if(JarJar.contactWith(b) == true){
-        println("Yah!");
-        JarJar.currentHP = JarJar.currentHP - 1;  
-        bullets.remove(i);
-      }
-      if (salsa.currentHP <= 0) {
-        salsas.remove(j);
+
+        if (JarJar.contactWith(b) == true) {
+          println("Yah!");
+          JarJar.currentHP = JarJar.currentHP - 1;  
+          bullets.remove(i);
+        }
       }
       if (p.contactsWithPlayer(salsa) == true) {
         println("I ded");
         p.currentHP = p.currentHP - 1;
       }
-    }
     }
 
     if (p.loc.x >= width) {
@@ -156,9 +159,17 @@ void draw() {
       p.loc.y = height - 1;
       bg = (int)random(1, 7);
     }
+    fill(255, 255, 255, 0);
+    //text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
+    rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
+    fill(0, 255, 0);
+    rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
   }
 
+
   if (screen == 0) {
+    a = new Button(200, 650);
+    b = new Button(700, 650);
     background(background1);
     a.display();
     b.display();
@@ -206,14 +217,26 @@ void draw() {
     background(0);
     d.display();
     fill(255);
-    textSize(80);
+    textSize(60);
     text("GAME OVER", width/2, 200);
     textSize(60);
     noFill();
     fill(0);
     text("TRY AGAIN", 150, 70);
   }
-  if (p.currentHP == 0) {
+  if (screen == 10) {
+    background(0);
+    d.display();
+    fill(255);
+    textSize(80);
+    text("GAME OVER", width/2, 200);
+    text("YOU WIN", width/2, 300);
+    textSize(60);
+    noFill();
+    fill(0);
+    text("TRY AGAIN", 150, 70);
+  }
+  if (p.currentHP <= 0) {
     screen = 3;
     p.currentHP = 1000;
   }
@@ -225,17 +248,23 @@ void draw() {
 }
 
 void mousePressed() {
-  if (b.inRect()) {
-    screen = 1;
+  if (screen == 0) {
+    if (b.inRect()) {
+      screen = 1; //helps screen
+    }
+    if (a.inRect()) {
+      screen = 4;
+    }
   }
-  if (c.inRect()) {
-    screen = 0;
+  if (screen ==1) {
+    if (c.inRect()) {
+      screen = 0; //back to menu from help screen
+    }
   }
-  if (d.inRect()) {
-    screen = 0;
-  }
-  if (a.inRect()) {
-    screen = 4;
+  if (screen == 2) {
+    if (d.inRect()) {
+      screen = 4; //back to game from pause
+    }
   }
 }
 
