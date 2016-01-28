@@ -111,7 +111,7 @@ void draw() {
       if (dist(p.loc.x, p.loc.y, salsa.loc.x, salsa.loc.y) >= 200) {
         dir = PVector.sub(p.loc, location);
         dir.normalize();
-        dir.mult(7.5);
+        dir.mult(7);
         salsa.vel = dir;
       }
 
@@ -135,17 +135,18 @@ void draw() {
 
         if (JarJar.contactWith(b) == true) {
           println("Yah!");
-          JarJar.currentHP = JarJar.currentHP - 1;  
+          JarJar.currentHP = JarJar.currentHP - 2;  
           bullets.remove(i);
         }
       }
-      if (p.contactsWithPlayer(salsa) == true) {
-        println("I ded");
-        p.currentHP = p.currentHP - 2;
-      }
       if (p.contactsWithPlayer(JarJar) == true){
         println("we ded");
-        p.currentHP = p.currentHP - 10;
+        p.currentHP = p.currentHP - 5;
+      }
+      if (p.contactsWithPlayer(salsa) == true) {
+        println("I ded");
+        salsa.currentHP = salsa.currentHP - 2;
+        p.currentHP = p.currentHP - 5;
       }
     }
 
@@ -248,8 +249,7 @@ void draw() {
   if (screen == 10) {
     background(0);
     t.display();
-    fill(255);
-    textSize(60);
+    fill(0,random(256),225);
     text("CONGRATZ", width/2, 200);
     text("YOU WIN", width/2, 300);
     text("Your total time is: " + time, width/2, height/2);
