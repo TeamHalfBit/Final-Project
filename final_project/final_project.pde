@@ -215,8 +215,9 @@ void draw() {
     textSize(30);
     text("Use the WASD on your keyboard to move your character", width/2, 200);
     text("The mouse controls the turret, while left-clicking shoots a projectile", width/2, 250);
-    text("Look for any powerups that may pop up in the game.", width/2, 300);
+    text("Look for any health pickups that may pop up in the game.", width/2, 300);
     text("They give you an extra edge against the Jabinx!", width/2, 350);
+    text("Press 'p' to pause the game at any time", width/2, 400);
     noFill();
     fill(0);
     textSize(60);
