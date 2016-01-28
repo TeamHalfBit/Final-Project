@@ -189,6 +189,11 @@ void draw() {
     fill(0, 255, 0);
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
     
+    fill(255,0,0);
+    rect(p.loc.x - 50, p.loc.y+25, 500/5, 10);
+    fill(0, 255, 0);
+    rect(p.loc.x - 50, p.loc.y+25, p.currentHP/5, 10);
+    
    if(screen == 4){
      time++;
      text(time, 50, 50);
@@ -216,6 +221,7 @@ void draw() {
     fill(0);
     text("START", 350, 720);
     text("HELP", 850, 720);
+    time = 0;
   }
   if (screen == 1) {
     background(background2);
@@ -267,6 +273,7 @@ void draw() {
     noFill();
     fill(0);
     text("TRY AGAIN", 150, 70);
+    
   }
   if (p.currentHP <= 0) {
     screen = 3;
