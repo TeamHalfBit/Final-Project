@@ -41,6 +41,7 @@ void setup() {
   c = new Button(900, 0);
   d = new Button(0, 0);
   d = new Button(0, 0);
+  t = new Button(0,0);
   p = new Player(width/2, height/2, -3, 3, "Tank_Body", 2, ".png", 3);
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
   salsas.add(new Enemy(random(width), random(height), -2, 2, 2, 2, "Salsa", 2, ".png", 9));
@@ -137,6 +138,8 @@ void draw() {
 
       if (JarJar.currentHP <= 0) {
         screen = 10;
+        JarJar.currentHP = 100;
+        p.currentHP = 500;
       }
       for (int i = bullets.size() - 1; i >= 0; i--) {
         Bullet b = bullets.get(i);
@@ -246,9 +249,9 @@ void draw() {
   }
   if (screen == 10) {
     background(0);
-    d.display();
+    t.display();
     fill(255);
-    textSize(80);
+    textSize(60);
     text("GAME OVER", width/2, 200);
     text("YOU WIN", width/2, 300);
     textSize(60);
@@ -258,7 +261,8 @@ void draw() {
   }
   if (p.currentHP <= 0) {
     screen = 3;
-    p.currentHP = 1000;
+    p.currentHP = 500;
+    JarJar.currentHP = 100;
   }
   if (keyPressed) {
     if (key == 'p') {
@@ -284,6 +288,16 @@ void mousePressed() {
   if (screen == 2) {
     if (d.inRect()) {
       screen = 4; //back to game from pause
+    }
+  }
+  if (screen == 3) {
+    if (d.inRect()) {
+      screen = 0;
+    }
+  }
+  if (screen == 10) {
+    if (t.inRect()) {
+     screen = 0;
     }
   }
 }
