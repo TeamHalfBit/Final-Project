@@ -4,9 +4,9 @@
  ********************************/
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 ArrayList <Enemy> salsas = new ArrayList <Enemy>();
+ArrayList <PowerUp> health = new ArrayList <PowerUp>();
 boolean canShoot = true;
 float canShootCounter;
-int overHeat;
 PImage back1, back2, back3, back4, back5, back6;
 int bg;
 PImage bd;
@@ -19,7 +19,7 @@ Button c;
 Button d;
 Button t;
 EnemyBoss JarJar; //declared JarJar
-PowerUp health; //Is this gonna get added in?
+//PowerUp health; //Is this gonna get added in?
 
 int count = 5;
 Player p; //Declares the player
@@ -45,7 +45,8 @@ void setup() {
   turret = new Player(width/2, height/2, 0, 0, "Tank_cannon", 2, ".png", 1);
   salsas.add(new Enemy(random(width), random(height), -2, 2, 1, 1, "Salsa", 2, ".png", 9));
   JarJar = new EnemyBoss(random(width), random(height), -5, 5, 100, 100, "Jar_Jar", 2, ".png", 2);
-  //health = new PowerUp(400, 500, "Power_Health", 2, ".png", 6);
+  health.add(new PowerUp("Power_Health", 2, ".png", 6));
+  //health = new PowerUp("Power_Health", 2, ".png", 6);
   //b = new Box(random(width), random(height));
   //zero = new Bullet(0);
   back1 = loadImage("GrassBackground.jpg");
@@ -63,6 +64,9 @@ void draw() {
   if (screen == 4) {
     if (salsas.size() < 4) {
       salsas.add(new Enemy(random(width), random(height), -2, 2, 10, 10, "Salsa", 2, ".png", 9));
+    }
+    if (health.size() < 2){
+      health.add(new PowerUp("Power_Health", 2, ".png", 6));
     }
     if (bg == 1) {
       bd = back1;
@@ -93,6 +97,18 @@ void draw() {
     p.update();
     JarJar.display();
     JarJar.bounce();
+    
+    for (int i = health.size() - 1; i >= 0; i--){
+      PowerUp hp = health.get(i);
+      hp.display();
+      if(hp.contactsWithBox(p)){
+        health.remove(i);
+        p.currentHP = p.currentHP + 50;
+          if (p.currentHP >= 500){
+            p.currentHP = 500;
+          }
+      }
+    }
 
     for (int i = bullets.size() - 1; i >= 0; i--) {
       Bullet bullet = bullets.get(i);

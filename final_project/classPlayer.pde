@@ -10,8 +10,8 @@ class Player {
 
 
   Player(float tX, float tY, float tVelX, float tVelY, String prefix, int digits, String suffix, int tFrames) {  //tank body
-    currentHP = 1000; //Dynamic health that changes
-    maxHP = 1000; //Maxmimum health available
+    currentHP = 500; //Dynamic health that changes
+    maxHP = 500; //Maxmimum health available
     frames = tFrames;
     sprites = new PImage[frames];
     loc = new PVector(tX, tY);
