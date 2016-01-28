@@ -94,7 +94,7 @@ void draw() {
     p.update();
     JarJar.display();
     JarJar.bounce();
-    
+
     for (int i = bullets.size() - 1; i >= 0; i--) {
       Bullet bullet = bullets.get(i);
       bullet.update();
@@ -117,12 +117,12 @@ void draw() {
       //health.display();
 
       if (salsa.currentHP <= 0) {
-          salsas.remove(j);
-        }
+        salsas.remove(j);
+      }
 
-      if(JarJar.currentHP <= 0) {
-          screen = 10;
-        }
+      if (JarJar.currentHP <= 0) {
+        screen = 10;
+      }
       for (int i = bullets.size() - 1; i >= 0; i--) {
         Bullet b = bullets.get(i);
 
@@ -131,17 +131,16 @@ void draw() {
           salsa.currentHP = salsa.currentHP - 1;
           bullets.remove(i);
         }
-      
-        if(JarJar.contactWith(b) == true){
+
+        if (JarJar.contactWith(b) == true) {
           println("Yah!");
           JarJar.currentHP = JarJar.currentHP - 1;  
           bullets.remove(i);
         }
-        
-        if (p.contactsWithPlayer(salsa) == true) {
-          println("I ded");
-          p.currentHP = p.currentHP - 1;
-        }
+      }
+      if (p.contactsWithPlayer(salsa) == true) {
+        println("I ded");
+        p.currentHP = p.currentHP - 1;
       }
     }
 
@@ -161,11 +160,11 @@ void draw() {
       p.loc.y = height - 1;
       bg = (int)random(1, 7);
     }
-     fill(255, 255, 255, 0);
-     //text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
-     rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
-     fill(0, 255, 0);
-     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
+    fill(255, 255, 255, 0);
+    //text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
+    rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
+    fill(0, 255, 0);
+    rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
   }
 
 
@@ -226,7 +225,7 @@ void draw() {
     fill(0);
     text("TRY AGAIN", 150, 70);
   }
-   if (screen == 10) {
+  if (screen == 10) {
     background(0);
     d.display();
     fill(255);
@@ -238,7 +237,7 @@ void draw() {
     fill(0);
     text("TRY AGAIN", 150, 70);
   }
-  if (p.currentHP == 0) {
+  if (p.currentHP <= 0) {
     screen = 3;
     p.currentHP = 1000;
   }
@@ -250,20 +249,23 @@ void draw() {
 }
 
 void mousePressed() {
-  if (screen ==
-    0) {
-  if (b.inRect()) {
+  if (screen == 0) {
+    if (b.inRect()) {
       screen = 1; //helps screen
     }
-  if (c.inRect()) {
+    if (a.inRect()) {
+      screen = 4;
+    }
+  }
+  if (screen ==1) {
+    if (c.inRect()) {
       screen = 0; //back to menu from help screen
     }
   }
-  if (d.inRect()) {
-    screen = 4; //back to game from pause
-  }
-  if (a.inRect()) {
-    screen = 4;
+  if (screen == 2) {
+    if (d.inRect()) {
+      screen = 4; //back to game from pause
+    }
   }
 }
 
