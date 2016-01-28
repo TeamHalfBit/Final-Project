@@ -27,8 +27,6 @@ class Player {
     int currentFrame = frameCount%frames;
     image(sprites[currentFrame], loc.x, loc.y);
     fill(255,0,0);
-    text(currentHP + "/"+maxHP, loc.x, loc.y + 70);
-    
   }
     boolean contactsWithPlayer(Enemy e){
     if(e.loc.x + 16 >= loc.x - 16 && e.loc.x -16 < loc.x + 16 &&

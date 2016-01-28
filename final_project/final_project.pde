@@ -6,12 +6,9 @@ ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 ArrayList <Enemy> salsas = new ArrayList <Enemy>();
 ArrayList <PowerUp> health = new ArrayList <PowerUp>();
 boolean canShoot = true;
-float canShootCounter;
-PImage back1, back2, back3, back4, back5, back6;
-int bg;
-PImage bd;
-int screen;
-PImage background1, background2, background3;
+float canShootCounter,theta,radius;
+PImage back1, back2, back3, back4, back5, back6, bd, background1, background2, background3;
+int bg,screen,time,score;
 boolean button;
 Button a; //declared multiple buttons for UI
 Button b;
@@ -19,20 +16,9 @@ Button c;
 Button d;
 Button t;
 EnemyBoss JarJar; //declared JarJar
-//PowerUp health; //Is this gonna get added in?
-int time;
-
 int count = 5;
 Player p; //Declares the player
 Player turret; //Declares the turret
-
-float theta;
-float radius;
-
-int score;
-//Box b;
-//Bullet zero;
-//Bullet one;
 
 void setup() {
   size(1200, 800);
@@ -48,9 +34,6 @@ void setup() {
   salsas.add(new Enemy(random(width), random(height), -2, 2, 2, 2, "Salsa", 2, ".png", 9));
   JarJar = new EnemyBoss(random(width), random(height), -5, 5, 100, 100, "Jar_Jar", 2, ".png", 2);
   health.add(new PowerUp("Power_Health", 2, ".png", 6));
-  //health = new PowerUp("Power_Health", 2, ".png", 6);
-  //b = new Box(random(width), random(height));
-  //zero = new Bullet(0);
   back1 = loadImage("GrassBackground.jpg");
   back2 = loadImage("IceBackground.jpg");
   back3 = loadImage("Lava.jpg");
@@ -131,7 +114,6 @@ void draw() {
         dir.mult(7.5);
         salsa.vel = dir;
       }
-      //health.display();
 
       if (salsa.currentHP <= 0) {
         salsas.remove(j);
@@ -159,7 +141,7 @@ void draw() {
       }
       if (p.contactsWithPlayer(salsa) == true) {
         println("I ded");
-        p.currentHP = p.currentHP - 1;
+        p.currentHP = p.currentHP - 2;
       }
       if (p.contactsWithPlayer(JarJar) == true){
         println("we ded");
@@ -184,7 +166,6 @@ void draw() {
       bg = (int)random(1, 7);
     }
     fill(255, 255, 255, 0);
-    //text(JarJar.currentHP,JarJar.loc.x,JarJar.loc.y + 50);
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
     fill(0, 255, 0);
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
@@ -195,6 +176,7 @@ void draw() {
     rect(p.loc.x - 50, p.loc.y+25, p.currentHP/5, 10);
     
    if(screen == 4){
+     fill(0,0,255);
      time++;
      text(time, 50, 50);
    }
@@ -216,6 +198,8 @@ void draw() {
     text("The city has been evacuated", width/2, 300);
     text("The only thing between you and them is your tank", width/2, 350);
     text("And they have their sights on you!", width/2, 400);
+    text("In other words, you must kill their leader",width/2,450);
+    text("Jar Jar",width/2,500);
     textSize(60);
     noFill();
     fill(0);
