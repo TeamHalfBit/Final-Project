@@ -20,6 +20,7 @@ Button d;
 Button t;
 EnemyBoss JarJar; //declared JarJar
 //PowerUp health; //Is this gonna get added in?
+int time;
 
 int count = 5;
 Player p; //Declares the player
@@ -187,6 +188,11 @@ void draw() {
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, 100, 10);
     fill(0, 255, 0);
     rect(JarJar.loc.x - 50, JarJar.loc.y+25, JarJar.currentHP, 10);
+    
+   if(screen == 4){
+     time++;
+     text(time, 50, 50);
+   }
   }
 
 
@@ -242,18 +248,21 @@ void draw() {
     fill(255);
     textSize(60);
     text("GAME OVER", width/2, 200);
+    text("Your total time is: " + time, width/2, height/2);
     textSize(60);
     noFill();
     fill(0);
     text("TRY AGAIN", 150, 70);
+    
   }
   if (screen == 10) {
     background(0);
     t.display();
     fill(255);
     textSize(60);
-    text("GAME OVER", width/2, 200);
+    text("CONGRATZ", width/2, 200);
     text("YOU WIN", width/2, 300);
+    text("Your total time is: " + time, width/2, height/2);
     textSize(60);
     noFill();
     fill(0);
